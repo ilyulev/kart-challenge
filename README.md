@@ -84,3 +84,67 @@ _By following these guidelines, you should be able to build a functional and vis
 - Figma design file: [design.fig](./design.fig)
 - Red Hat Text font: https://fonts.google.com/specimen/Red+Hat+Text
 
+# Implementation
+A robust, production-ready Go implementation of the Oolio food ordering API following Go project layout standards and best practices.
+
+## 🏗️ Project Structure
+
+This project follows the [Standard Go Project Layout](https://github.com/golang-standards/project-layout):
+./
+├── cmd/api/                    # Application entrypoints
+├── internal/                   # Private application code
+│   ├── handlers/              # HTTP handlers
+│   ├── models/                # Data models
+│   ├── services/              # Business logic
+│   ├── middleware/            # HTTP middleware
+│   └── config/                # Configuration
+├── pkg/utils/                 # Public utility libraries
+├── api/                       # OpenAPI specifications
+├── deployments/               # Docker & deployment configs
+├── scripts/                   # Build, install, analysis scripts
+└── docs/                      # Documentation
+
+## 🚀 Features
+
+✅ **Clean Architecture**
+- Separation of concerns (handlers, services, models)
+- Dependency injection
+- Testable code structure
+
+✅ **Go Best Practices**
+- Standard Go Project Layout
+- Proper package organization
+- Internal/external API separation
+
+✅ **Production-Ready**
+- Echo framework for high performance
+- Comprehensive error handling
+- Health checks and monitoring
+- Docker containerization
+
+✅ **Advanced Promo Code System**
+- Concurrent file processing
+- O(1) lookup performance
+- Robust validation logic
+
+## 🛠️ Quick Start
+
+### Prerequisites
+- Go 1.21 or higher
+- Make (optional, for convenience commands)
+
+### Development Setup
+
+```bash
+# Clone repository
+git clone <your-repo>
+cd kart-challenge/backend-api
+
+# Install dependencies
+make deps
+
+# Run the application
+make run
+
+# Or run directly
+go run ./cmd/api/main.go
