@@ -29,7 +29,7 @@ func (h *HealthHandler) Health(c echo.Context) error {
 	// Build response
 	response := models.HealthResponse{
 		Status:     "healthy",
-		Service:    "oolio-food-api",
+		Service:    "github.com/ilyulev/kart-challenge/backend-api",
 		PromoCodes: promoStatus.CodesLoaded,
 		PromoStatus: models.PromoServiceStatus{
 			Status:        promoStatus.Status,

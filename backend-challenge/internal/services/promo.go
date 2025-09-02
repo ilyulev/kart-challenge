@@ -39,7 +39,7 @@ func (p *PromoCodeService) Initialize() error {
 	log.Println("Promo code service initializing...")
 
 	// Load mock data immediately for quick startup
-	p.loadMockPromoCodes()
+	p.LoadMockPromoCodes()
 
 	// Start async download in background
 	go p.downloadCodesAsync()
@@ -257,7 +257,7 @@ func (p *PromoCodeService) setLoadError(err error) {
 }
 
 // loadMockPromoCodes loads initial mock data for immediate availability
-func (p *PromoCodeService) loadMockPromoCodes() {
+func (p *PromoCodeService) LoadMockPromoCodes() {
 	mockCodes := []string{
 		"HAPPYHRS", "FIFTYOFF", "WELCOME1", "NEWUSER2", "DISCOUNT",
 		"SAVE20PC", "FREESHIP", "SUMMER25", "AUTUMN30", "WINTER15",
@@ -276,12 +276,13 @@ func (p *PromoCodeService) loadMockPromoCodes() {
 
 // IsValidPromoCode checks if a promo code is valid (thread-safe)
 func (p *PromoCodeService) IsValidPromoCode(code string) bool {
-	if !isValidPromoCodeFormat(code) {
+	upperCode := strings.ToUpper(code)
+	if !isValidPromoCodeFormat(upperCode) {
 		return false
 	}
 
-	p.codesMutex.RLock()
-	valid := p.validCodes[strings.ToUpper(code)]
+	p.codesMutex.RLock() // ✅ Keep this
+	valid := p.validCodes[upperCode]
 	p.codesMutex.RUnlock()
 
 	return valid
